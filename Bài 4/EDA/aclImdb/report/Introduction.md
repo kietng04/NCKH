@@ -10,7 +10,7 @@
 Dataset được thu thập vào khoảng năm 2011 từ các bình luận phim trên trang web IMDB. Các bình luận được chọn từ nhiều giai đoạn khác nhau trong lịch sử điện ảnh.
 # Cấu trúc dữ liệu
 |Biến	    |Loại dữ liệu   |Mô tả                                            |
-|-----------|---------------|-------------------------------------------------|
+|-----------|     :----:    |-------------------------------------------------|
 |review	    |text	        |Nội dung bình luận phim do người dùng IMDB viết  |
 |sentiment  |integer	    |Nhãn cảm xúc: 1 *(tích cực)* hoặc 0 *(tiêu cực)* |
 # Đặc điểm bổ sung
