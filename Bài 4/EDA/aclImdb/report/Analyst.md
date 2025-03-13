@@ -1,11 +1,10 @@
 # Thống kê đối với biến phân loại Sentiment
 
 1. Biểu đồ phân phối Sentiment
-   ```
+```
    def _plot_distribution(self):
      ax = self.figure.add_subplot(111)
-   ```
-   
+
   data = [
    len(self.train_pos_data),
    len(self.train_neg_data),
@@ -35,7 +34,7 @@ Bản đồ này hiển thị:
 # Phân tích đặc trưng của comment
 
 1. Phân phối độ dài bình luận
-   ```
+```
    def _plot_avg_length(self):
      ax = self.figure.add_subplot(111)
 
@@ -50,14 +49,14 @@ Bản đồ này hiển thị:
    colors = ['#5cb85c', '#d9534f', '#5bc0de', '#f0ad4e']
 
    bars = ax.bar(labels, avg_lengths, color=colors)
-   ```
+```
 Thông qua <ins>\_plot_svg_length()</ins>, biểu đồ này hiển thị độ dài trung bình _(số từ)_ của bình luận trong mỗi nhóm, cho phép so sánh:
 
 - Độ dài trung bình bình luận tích cực vs tiêu cực
 - Độ dài trung bình giữa tập huấn luyện và tập kiểm tra
 
 2. Phân tích số lượng từ duy nhất _(unique words)_
-   ```
+```
    def _plot_word_freq(self, top_n):
     ax = self.figure.add_subplot(111)
 
@@ -69,5 +68,5 @@ Thông qua <ins>\_plot_svg_length()</ins>, biểu đồ này hiển thị độ 
    ax.set_yticks(y_pos)
    ax.set_yticklabels(words)
    ax.invert_yaxis()  # Labels read top-to-bottom
-   ```
+```
 Ứng dụng có phân tích tần suất từ thông qua phương thức <ins>_plot_word_freq()</ins>.
