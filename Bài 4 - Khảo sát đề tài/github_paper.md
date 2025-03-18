@@ -1,0 +1,1 @@
+https://github.com/declare-lab/awesome-sentiment-analysis#aspect-based-sentiment-analysis
