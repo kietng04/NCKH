@@ -4,7 +4,7 @@
 |-----------------------------------|----------|----------------------------------------------------------------------|
 |Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Tìm dataset, literature review, paper, code EDA, input, output, metric|
 |Nguyễn Thế Kiên                    |3122410194|Kiểm tra lại bài tuần 3 và bổ sung reference, làm phần EDA|
-|Phạm Văn Kiệt                      |3122410200|Làm phần EDA|
+|Phạm Văn Kiệt                      |3122410200|Làm phần EDA, giới thiệu, định nghĩa, phân tích, chuẩn bị dữ liệu |
 
 
 # PHÂN CÔNG ĐỀ TÀI CUỐI KHOÁ
