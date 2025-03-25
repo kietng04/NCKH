@@ -5,7 +5,13 @@
 |Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Tìm dataset, literature review, paper, code EDA, input, output, metric|
 |Nguyễn Thế Kiên                    |3122410194|Kiểm tra lại bài tuần 3 và bổ sung reference, làm phần EDA|
 |Phạm Văn Kiệt                      |3122410200|Làm phần EDA, giới thiệu, định nghĩa, phân tích, chuẩn bị dữ liệu |
+# BÀI 4 tiếp theo
 
+|Họ và tên                          |MSSV      | Nhiệm vụ                                                             |
+|-----------------------------------|----------|----------------------------------------------------------------------|
+|Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Viết khảo toàn bộ sát đề tài|
+|Nguyễn Thế Kiên                    |3122410194|Làm slide khảo sát đề tài và làm slide khảo sát|
+|Phạm Văn Kiệt                      |3122410200| | Đọc hiểu nội dung khảo sát và key paper để thuyết trình
 
 # PHÂN CÔNG ĐỀ TÀI CUỐI KHOÁ
 
