@@ -11,7 +11,7 @@
 |-----------------------------------|----------|----------------------------------------------------------------------|
 |Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Viết khảo toàn bộ sát đề tài|
 |Nguyễn Thế Kiên                    |3122410194|Làm slide khảo sát đề tài và làm slide khảo sát|
-|Phạm Văn Kiệt                      |3122410200| | Đọc hiểu nội dung khảo sát và key paper để thuyết trình
+|Phạm Văn Kiệt                      |3122410200| TÌm hiểu nội dung khảo sát, key paper để thuyết trình
 
 # PHÂN CÔNG ĐỀ TÀI CUỐI KHOÁ
 
