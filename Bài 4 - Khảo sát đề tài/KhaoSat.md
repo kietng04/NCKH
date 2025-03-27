@@ -233,6 +233,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
     * Việc lựa chọn các mẫu âm một cách hoàn toàn *ngẫu nhiên* có thể dẫn đến việc hầu hết các mẫu âm quá "dễ" để mô hình phân biệt. Điều này có nghĩa là mô hình có thể hội tụ nhanh nhưng không học được các đặc trưng đủ tinh vi để phân biệt giữa các thực thể (từ/n-gram/văn bản) có ngữ nghĩa gần giống nhau nhưng khác biệt quan trọng.
 
 * **Đề xuất Hard Negative Sampling:**
+        ![TF-IDF](hinhanh/4-1-hard-negative.ppm)
     * **Ý tưởng cốt lõi:** Thay vì chọn mẫu âm ngẫu nhiên, chúng ta nên tập trung vào việc chọn các mẫu âm "khó" (Hard Negatives). Đây là những mẫu âm mà mô hình *dễ bị nhầm lẫn* với mẫu dương. Trong không gian embedding, đây thường là những mẫu có vector biểu diễn *gần* với vector của mẫu dương nhưng lại thuộc về một lớp khác hoặc không có mối liên hệ ngữ nghĩa thực sự.
     * **Cách tiếp cận (Gợi ý):**
         1.  **Trong quá trình huấn luyện:** Đối với một mẫu dương (anchor document/n-gram), tính toán độ tương đồng (ví dụ: cosine similarity) với một tập hợp các ứng viên mẫu âm tiềm năng.
