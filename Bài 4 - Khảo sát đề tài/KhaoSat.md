@@ -176,7 +176,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
         * **Lưu ý quan trọng:** Kết quả 97.42% này, mặc dù rất cao và từng được coi là state-of-the-art trên IMDB, nhưng sau đó đã được Zhang and Arefyev (2022) [6] phát hiện là **không chính xác** do lỗi trong quy trình đánh giá thử nghiệm. Kết quả thực tế của phương pháp này sau khi sửa lỗi được xác định là **93.68%** [6].
 
 ## 2.3. Phương pháp dựa trên Transformer
-
+ ![TF-IDF](hinhanh/2-2-3-transform.webp)
 * **Giới thiệu:**
     * Các phương pháp này dựa trên kiến trúc **Transformer**, nổi bật với cơ chế **Self-Attention** [16].
     * Self-Attention cho phép mô hình đánh giá mức độ liên quan của tất cả các từ trong một câu khi xử lý một từ cụ thể, giúp nắm bắt hiệu quả các phụ thuộc ngữ nghĩa và ngữ pháp phức tạp, kể cả giữa các từ ở xa nhau [16].
@@ -199,10 +199,12 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
     * **Nhược điểm:** Các mô hình Transformer thường rất lớn và phức tạp, đòi hỏi **nhiều tài nguyên tính toán** (GPU, bộ nhớ) và thời gian cho việc huấn luyện và fine-tuning [6, 16].
 
 ## 2.4. Phương pháp Ensemble Learning
+ ![TF-IDF](hinhanh/2-2-4-Ensemble-Learning.ppm)
 
 * **Khái niệm:** Ensemble Learning là một kỹ thuật trong học máy, nơi **kết quả dự đoán từ nhiều mô hình riêng lẻ (base models) được kết hợp lại** để đưa ra một dự đoán cuối cùng duy nhất. Mục đích chính là để **cải thiện độ chính xác, độ ổn định và khả năng khái quát hóa** so với việc chỉ sử dụng một mô hình đơn lẻ. Có nhiều cách để kết hợp, ví dụ như lấy trung bình, bỏ phiếu đa số, hoặc huấn luyện một meta-model.
 
 ### Ví dụ 1: Ensemble các mô hình Transformer lai (Tan et al., 2022b) [10]
+ ![TF-IDF](hinhanh//2-2-4-robert.jpg)
 
 * **Mô hình:** Các tác giả đề xuất một mô hình ensemble bằng cách kết hợp dự đoán từ ba mô hình lai khác nhau, tất cả đều dựa trên RoBERTa nhưng kết hợp với các kiến trúc RNN khác nhau:
     1.  RoBERTa + LSTM
@@ -211,6 +213,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 * **Kết quả:** Bằng cách kết hợp điểm mạnh của từng biến thể, mô hình ensemble này đã đạt được độ chính xác **94.9%**, cao hơn so với các mô hình thành phần khi đứng riêng lẻ [10].
 
 ### Ví dụ 2: Ensemble DV-ngrams-cosine + NB-weighted BON (Thongtan and Phienthrakul, 2019 [7] - với sự điều chỉnh từ Zhang and Arefyev, 2022 [6])
+ ![TF-IDF](hinhanh/2-2-4-DV-ngrams.jpg)
 
 * **Mô tả Ensemble (trong bài báo gốc [7]):** Mô hình được Thongtan and Phienthrakul báo cáo đạt 97.42% là một dạng ensemble đơn giản, kết hợp đầu ra (logits) từ hai nguồn đặc trưng khác nhau trước khi đưa vào lớp Logistic Regression cuối cùng:
     1.  Đặc trưng từ vector tài liệu **DV-ngrams-cosine**.
