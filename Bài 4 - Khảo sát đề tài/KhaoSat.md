@@ -86,15 +86,22 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 
 * **Mô tả chung:** Sử dụng thuật toán cổ điển và trích xuất đặc trưng thủ công.
 * **Các thuật toán phổ biến:**
+    *Các thuật toán phổ biến:**
     * Naive Bayes
+      ![Naive Bayes](hinhanh/2-1-naive-bayes.png)
     * SVM (Support Vector Machines)
+      ![SVM](hinhanh/2-1-svm.png)
     * Maximum Entropy
+      ![Maximum Entropy](hinhanh/2-1-max-entropy.png)
 * **Kỹ thuật tiền xử lý và trích xuất đặc trưng:**
-    * Tokenization
+   * Tokenization
+      ![Tokenization](hinhanh/2-1-token.png)
     * Lemmatization
-    * Unigram
-    * Bigram
+      ![Lemmatization](hinhanh/2-1-lemmatization.png)
+    * Unigram & Bigram
+      ![Unigram](hinhanh/2-1-unigram.png)
     * TF-IDF
+      ![TF-IDF](hinhanh/2-1-tf-idf.png)
 * **Ví dụ và kết quả:**
     * Iqbal et al. (2018) đạt độ chính xác 88% [2].
 * **Đánh giá:**
@@ -106,12 +113,12 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 ## 2.2. Phương pháp Deep Learning (DL)
 
 ### 2.2.1. Mạng Nơ-ron Tích chập (CNN - Convolutional Neural Networks)
-
+ ![TF-IDF](hinhanh/2-2-1-cnn.png)
 * **Nguyên lý:** Sử dụng các bộ lọc (kernels) để trượt qua dữ liệu đầu vào (ví dụ: ma trận word embedding của câu) nhằm **trích xuất đặc trưng cục bộ (local features)**, chẳng hạn như các cụm từ quan trọng, bất kể vị trí của chúng trong câu.
 * **Ví dụ và kết quả:** Dholpuria et al. (2018) đã áp dụng CNN, kết hợp với kỹ thuật **Count Vectorizer** (sau khi loại bỏ ký tự đặc biệt và stop words), và báo cáo đạt độ chính xác **99.33%** [3]. *(Lưu ý: Kết quả này đặc biệt cao, cần xem xét kỹ lưỡng bối cảnh thực nghiệm, bộ dữ liệu và phương pháp đánh giá được sử dụng trong nghiên cứu đó).*
 
 ### 2.2.2. Mạng Nơ-ron Hồi quy (RNN - Recurrent Neural Networks)
-
+ ![TF-IDF](hinhanh/2-2-1-rnn.png)
 * **Nguyên lý:** Được thiết kế để **xử lý dữ liệu tuần tự (sequential data)** như ngôn ngữ tự nhiên. RNN có khả năng duy trì "bộ nhớ" về thông tin từ các bước trước đó trong chuỗi, giúp **nắm bắt các phụ thuộc ngữ cảnh dài hơn** trong câu [12].
 * **Các biến thể phổ biến:** Do RNN cơ bản gặp vấn đề về vanishing/exploding gradients, các biến thể phức tạp hơn thường được sử dụng:
     * LSTM (Long Short-Term Memory) [12]
@@ -121,6 +128,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 * **Ví dụ và kết quả:** Thinh et al. (2019) đã đề xuất một kiến trúc kết hợp **1D-CNN và GRU**, đạt được độ chính xác **90.02%** [4].
 
 ### 2.2.3. Mô hình Lai (Hybrid Models)
+ ![TF-IDF](hinhanh/2-2-3-hybrid.png)
 
 * **Khái niệm:** Các mô hình này kết hợp nhiều kiến trúc Deep Learning khác nhau, thường là **CNN và RNN (hoặc các biến thể như LSTM/GRU)**, nhằm tận dụng điểm mạnh của từng loại để cải thiện hiệu suất tổng thể.
 * **Ví dụ điển hình:** Mô hình "Hybrid CNN + BiLSTM with Attention" được đề xuất bởi **Jang et al. (2020)**, đạt độ chính xác **90.26%** [5].
@@ -143,13 +151,22 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 ### 2.2.4. Word Embeddings và Document Embeddings
 
 * **Word Embeddings (Word2Vec, GloVe):**
+ ![TF-IDF](hinhanh/2-2-4-Word2Vec.png)
+ ![TF-IDF](hinhanh/2-2-3-hybrid.png)
+
+
     * **Vai trò:** Biểu diễn các từ trong kho ngữ liệu dưới dạng các **vector số học dày đặc (dense vectors)** [14]. Các vector này có khả năng nắm bắt mối quan hệ ngữ nghĩa và cú pháp giữa các từ (ví dụ: vector("vua") - vector("đàn ông") + vector("phụ nữ") gần với vector("nữ hoàng")).
     * Chúng đóng vai trò quan trọng làm đầu vào cho nhiều mô hình Deep Learning, cung cấp biểu diễn ngữ nghĩa phong phú hơn so với các phương pháp đếm từ truyền thống [1, 14].
 
 * **Document Embeddings (Doc2Vec / Paragraph Vectors):**
+ ![TF-IDF](hinhanh/2-2-4Doc2vec-architecture.ppm)
+
     * **Vai trò:** Mở rộng từ ý tưởng của Word2Vec, nhằm mục đích tạo ra một **vector biểu diễn duy nhất cho toàn bộ một đoạn văn bản hoặc tài liệu**, thay vì chỉ cho từng từ riêng lẻ [15]. Vector này cố gắng mã hóa ý nghĩa hoặc chủ đề tổng thể của văn bản.
 
 * **Phương pháp DV-ngrams-cosine (Thongtan and Phienthrakul, 2019) [7]:**
+
+    ![TF-IDF](hinhanh/2-2-4-DV-ngrams.jpg)
+
     * **Mô tả phương pháp:**
         * Đây là một cải tiến dựa trên kiến trúc Doc2Vec (Paragraph Vector) [15].
         * Điểm khác biệt chính là việc sử dụng **độ đo tương đồng cosine (cosine similarity)** thay cho phép nhân vô hướng (dot product) trong quá trình huấn luyện để học vector tài liệu [7].
@@ -159,7 +176,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
         * **Lưu ý quan trọng:** Kết quả 97.42% này, mặc dù rất cao và từng được coi là state-of-the-art trên IMDB, nhưng sau đó đã được Zhang and Arefyev (2022) [6] phát hiện là **không chính xác** do lỗi trong quy trình đánh giá thử nghiệm. Kết quả thực tế của phương pháp này sau khi sửa lỗi được xác định là **93.68%** [6].
 
 ## 2.3. Phương pháp dựa trên Transformer
-
+ ![TF-IDF](hinhanh/2-2-3-transform.webp)
 * **Giới thiệu:**
     * Các phương pháp này dựa trên kiến trúc **Transformer**, nổi bật với cơ chế **Self-Attention** [16].
     * Self-Attention cho phép mô hình đánh giá mức độ liên quan của tất cả các từ trong một câu khi xử lý một từ cụ thể, giúp nắm bắt hiệu quả các phụ thuộc ngữ nghĩa và ngữ pháp phức tạp, kể cả giữa các từ ở xa nhau [16].
@@ -182,10 +199,12 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
     * **Nhược điểm:** Các mô hình Transformer thường rất lớn và phức tạp, đòi hỏi **nhiều tài nguyên tính toán** (GPU, bộ nhớ) và thời gian cho việc huấn luyện và fine-tuning [6, 16].
 
 ## 2.4. Phương pháp Ensemble Learning
+ ![TF-IDF](hinhanh/2-2-4-Ensemble-Learning.ppm)
 
 * **Khái niệm:** Ensemble Learning là một kỹ thuật trong học máy, nơi **kết quả dự đoán từ nhiều mô hình riêng lẻ (base models) được kết hợp lại** để đưa ra một dự đoán cuối cùng duy nhất. Mục đích chính là để **cải thiện độ chính xác, độ ổn định và khả năng khái quát hóa** so với việc chỉ sử dụng một mô hình đơn lẻ. Có nhiều cách để kết hợp, ví dụ như lấy trung bình, bỏ phiếu đa số, hoặc huấn luyện một meta-model.
 
 ### Ví dụ 1: Ensemble các mô hình Transformer lai (Tan et al., 2022b) [10]
+ ![TF-IDF](hinhanh//2-2-4-robert.jpg)
 
 * **Mô hình:** Các tác giả đề xuất một mô hình ensemble bằng cách kết hợp dự đoán từ ba mô hình lai khác nhau, tất cả đều dựa trên RoBERTa nhưng kết hợp với các kiến trúc RNN khác nhau:
     1.  RoBERTa + LSTM
@@ -194,6 +213,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 * **Kết quả:** Bằng cách kết hợp điểm mạnh của từng biến thể, mô hình ensemble này đã đạt được độ chính xác **94.9%**, cao hơn so với các mô hình thành phần khi đứng riêng lẻ [10].
 
 ### Ví dụ 2: Ensemble DV-ngrams-cosine + NB-weighted BON (Thongtan and Phienthrakul, 2019 [7] - với sự điều chỉnh từ Zhang and Arefyev, 2022 [6])
+ ![TF-IDF](hinhanh/2-2-4-DV-ngrams.jpg)
 
 * **Mô tả Ensemble (trong bài báo gốc [7]):** Mô hình được Thongtan and Phienthrakul báo cáo đạt 97.42% là một dạng ensemble đơn giản, kết hợp đầu ra (logits) từ hai nguồn đặc trưng khác nhau trước khi đưa vào lớp Logistic Regression cuối cùng:
     1.  Đặc trưng từ vector tài liệu **DV-ngrams-cosine**.
@@ -213,6 +233,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
     * Việc lựa chọn các mẫu âm một cách hoàn toàn *ngẫu nhiên* có thể dẫn đến việc hầu hết các mẫu âm quá "dễ" để mô hình phân biệt. Điều này có nghĩa là mô hình có thể hội tụ nhanh nhưng không học được các đặc trưng đủ tinh vi để phân biệt giữa các thực thể (từ/n-gram/văn bản) có ngữ nghĩa gần giống nhau nhưng khác biệt quan trọng.
 
 * **Đề xuất Hard Negative Sampling:**
+        ![TF-IDF](hinhanh/4-1-hard-negative.ppm)
     * **Ý tưởng cốt lõi:** Thay vì chọn mẫu âm ngẫu nhiên, chúng ta nên tập trung vào việc chọn các mẫu âm "khó" (Hard Negatives). Đây là những mẫu âm mà mô hình *dễ bị nhầm lẫn* với mẫu dương. Trong không gian embedding, đây thường là những mẫu có vector biểu diễn *gần* với vector của mẫu dương nhưng lại thuộc về một lớp khác hoặc không có mối liên hệ ngữ nghĩa thực sự.
     * **Cách tiếp cận (Gợi ý):**
         1.  **Trong quá trình huấn luyện:** Đối với một mẫu dương (anchor document/n-gram), tính toán độ tương đồng (ví dụ: cosine similarity) với một tập hợp các ứng viên mẫu âm tiềm năng.
