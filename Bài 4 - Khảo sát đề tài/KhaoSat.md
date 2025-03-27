@@ -86,15 +86,22 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 
 * **Mô tả chung:** Sử dụng thuật toán cổ điển và trích xuất đặc trưng thủ công.
 * **Các thuật toán phổ biến:**
+    *Các thuật toán phổ biến:**
     * Naive Bayes
+      ![Naive Bayes](hinhanh/2-1-naive-bayes.png)
     * SVM (Support Vector Machines)
+      ![SVM](hinhanh/2-1-svm.png)
     * Maximum Entropy
+      ![Maximum Entropy](hinhanh/2-1-max-entropy.png)
 * **Kỹ thuật tiền xử lý và trích xuất đặc trưng:**
-    * Tokenization
+   * Tokenization
+      ![Tokenization](hinhanh/2-1-token.png)
     * Lemmatization
-    * Unigram
-    * Bigram
+      ![Lemmatization](hinhanh/2-1-lemmatization.png)
+    * Unigram & Bigram
+      ![Unigram](hinhanh/2-1-unigram.png)
     * TF-IDF
+      ![TF-IDF](hinhanh/2-1-tf-idf.png)
 * **Ví dụ và kết quả:**
     * Iqbal et al. (2018) đạt độ chính xác 88% [2].
 * **Đánh giá:**
@@ -106,12 +113,12 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 ## 2.2. Phương pháp Deep Learning (DL)
 
 ### 2.2.1. Mạng Nơ-ron Tích chập (CNN - Convolutional Neural Networks)
-
+ ![TF-IDF](hinhanh/2-2-1-cnn.png)
 * **Nguyên lý:** Sử dụng các bộ lọc (kernels) để trượt qua dữ liệu đầu vào (ví dụ: ma trận word embedding của câu) nhằm **trích xuất đặc trưng cục bộ (local features)**, chẳng hạn như các cụm từ quan trọng, bất kể vị trí của chúng trong câu.
 * **Ví dụ và kết quả:** Dholpuria et al. (2018) đã áp dụng CNN, kết hợp với kỹ thuật **Count Vectorizer** (sau khi loại bỏ ký tự đặc biệt và stop words), và báo cáo đạt độ chính xác **99.33%** [3]. *(Lưu ý: Kết quả này đặc biệt cao, cần xem xét kỹ lưỡng bối cảnh thực nghiệm, bộ dữ liệu và phương pháp đánh giá được sử dụng trong nghiên cứu đó).*
 
 ### 2.2.2. Mạng Nơ-ron Hồi quy (RNN - Recurrent Neural Networks)
-
+ ![TF-IDF](hinhanh/2-2-1-rnn.png)
 * **Nguyên lý:** Được thiết kế để **xử lý dữ liệu tuần tự (sequential data)** như ngôn ngữ tự nhiên. RNN có khả năng duy trì "bộ nhớ" về thông tin từ các bước trước đó trong chuỗi, giúp **nắm bắt các phụ thuộc ngữ cảnh dài hơn** trong câu [12].
 * **Các biến thể phổ biến:** Do RNN cơ bản gặp vấn đề về vanishing/exploding gradients, các biến thể phức tạp hơn thường được sử dụng:
     * LSTM (Long Short-Term Memory) [12]
@@ -121,6 +128,7 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 * **Ví dụ và kết quả:** Thinh et al. (2019) đã đề xuất một kiến trúc kết hợp **1D-CNN và GRU**, đạt được độ chính xác **90.02%** [4].
 
 ### 2.2.3. Mô hình Lai (Hybrid Models)
+ ![TF-IDF](hinhanh/2-2-3-hybrid.png)
 
 * **Khái niệm:** Các mô hình này kết hợp nhiều kiến trúc Deep Learning khác nhau, thường là **CNN và RNN (hoặc các biến thể như LSTM/GRU)**, nhằm tận dụng điểm mạnh của từng loại để cải thiện hiệu suất tổng thể.
 * **Ví dụ điển hình:** Mô hình "Hybrid CNN + BiLSTM with Attention" được đề xuất bởi **Jang et al. (2020)**, đạt độ chính xác **90.26%** [5].
@@ -143,13 +151,22 @@ Bảng tổng hợp này cho thấy sự đa dạng trong các phương pháp ti
 ### 2.2.4. Word Embeddings và Document Embeddings
 
 * **Word Embeddings (Word2Vec, GloVe):**
+ ![TF-IDF](hinhanh/2-2-4-Word2Vec.png)
+ ![TF-IDF](hinhanh/2-2-3-hybrid.png)
+
+
     * **Vai trò:** Biểu diễn các từ trong kho ngữ liệu dưới dạng các **vector số học dày đặc (dense vectors)** [14]. Các vector này có khả năng nắm bắt mối quan hệ ngữ nghĩa và cú pháp giữa các từ (ví dụ: vector("vua") - vector("đàn ông") + vector("phụ nữ") gần với vector("nữ hoàng")).
     * Chúng đóng vai trò quan trọng làm đầu vào cho nhiều mô hình Deep Learning, cung cấp biểu diễn ngữ nghĩa phong phú hơn so với các phương pháp đếm từ truyền thống [1, 14].
 
 * **Document Embeddings (Doc2Vec / Paragraph Vectors):**
+ ![TF-IDF](hinhanh/2-2-4Doc2vec-architecture.ppm)
+
     * **Vai trò:** Mở rộng từ ý tưởng của Word2Vec, nhằm mục đích tạo ra một **vector biểu diễn duy nhất cho toàn bộ một đoạn văn bản hoặc tài liệu**, thay vì chỉ cho từng từ riêng lẻ [15]. Vector này cố gắng mã hóa ý nghĩa hoặc chủ đề tổng thể của văn bản.
 
 * **Phương pháp DV-ngrams-cosine (Thongtan and Phienthrakul, 2019) [7]:**
+
+    ![TF-IDF](hinhanh/2-2-4-DV-ngrams.jpg)
+
     * **Mô tả phương pháp:**
         * Đây là một cải tiến dựa trên kiến trúc Doc2Vec (Paragraph Vector) [15].
         * Điểm khác biệt chính là việc sử dụng **độ đo tương đồng cosine (cosine similarity)** thay cho phép nhân vô hướng (dot product) trong quá trình huấn luyện để học vector tài liệu [7].
