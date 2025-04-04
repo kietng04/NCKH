@@ -56,6 +56,34 @@ Với bối cảnh và tầm quan trọng của phân tích cảm xúc cũng nh�
 
 Thông qua việc thực hiện các mục tiêu trong phạm vi đã xác định, chúng tôi hy vọng bài khảo sát này sẽ mang lại một tài liệu tham khảo hữu ích và cập nhật cho cộng đồng nghiên cứu và ứng dụng NLP quan tâm đến lĩnh vực phân tích cảm xúc.
 
+### 1.4. Lý do chọn đề tài
+
+Việc thực hiện khảo sát này được thúc đẩy bởi một số lý do chính yếu sau:
+
+- **Tầm quan trọng và tính thời sự của Phân tích Cảm xúc**: Như đã trình bày ở mục 1.1, phân tích cảm xúc là một nhiệm vụ NLP cốt lõi với vô vàn ứng dụng thực tiễn trong nhiều lĩnh vực. Nhu cầu hiểu và xử lý cảm xúc trong dữ liệu văn bản ngày càng tăng cao, đặc biệt trong bối cảnh bùng nổ thông tin số.
+
+- **Sự phát triển nhanh chóng và đa dạng của các phương pháp**: Lĩnh vực này đã chứng kiến sự tiến bộ vượt bậc, từ các kỹ thuật ML truyền thống đến sự thống trị của các mô hình Deep Learning và Transformer. Sự đa dạng này tạo ra nhu cầu cấp thiết về việc hệ thống hóa kiến thức, so sánh hiệu quả và phân tích ưu nhược điểm của từng phương pháp một cách có cấu trúc.
+
+- **Vai trò trung tâm của tập dữ liệu IMDb 50K**: Tập dữ liệu IMDb đã trở thành một chuẩn mực (benchmark) không thể thiếu để đánh giá và so sánh các mô hình phân tích cảm xúc. Việc tập trung khảo sát các phương pháp trên chính tập dữ liệu này cho phép so sánh trực tiếp và khách quan hơn về hiệu suất, điều mà các khảo sát tổng quát hơn khó có thể đạt được.
+
+- **Cung cấp tài liệu tham khảo giá trị**: Một bài khảo sát tập trung, cập nhật và chi tiết về các phương pháp trên IMDb sẽ là nguồn tài liệu hữu ích cho cả các nhà nghiên cứu mới muốn tìm hiểu lĩnh vực, lẫn các chuyên gia đang tìm kiếm phương pháp tối ưu cho bài toán của mình hoặc xác định các hướng nghiên cứu tiềm năng.
+
+---
+
+### 1.5. Thách thức khi chọn đề tài
+
+Mặc dù có những lý do thuyết phục, việc thực hiện một bài khảo sát toàn diện về các phương pháp phân tích cảm xúc trên tập dữ liệu IMDb cũng đối mặt với một số thách thức đáng kể:
+
+- **Khối lượng nghiên cứu lớn và phân mảnh**: Số lượng các công trình nghiên cứu áp dụng các phương pháp khác nhau cho bài toán phân tích cảm xúc, kể cả chỉ trên tập IMDb, là rất lớn và liên tục tăng. Việc tổng hợp đầy đủ và chính xác đòi hỏi nỗ lực đáng kể.
+
+- **Tính nhất quán và khả năng tái lập (Reproducibility)**: Một thách thức lớn là đảm bảo tính nhất quán khi so sánh kết quả từ các nghiên cứu khác nhau. Các nghiên cứu có thể sử dụng các thiết lập thực nghiệm, kỹ thuật tiền xử lý, hoặc thậm chí các phiên bản thư viện khác nhau, dẫn đến sự khác biệt trong kết quả báo cáo. Đôi khi, các kết quả được công bố có thể chứa lỗi hoặc khó tái lập, như trường hợp đã được chỉ ra bởi Zhang & Arefyev (2022) [6] đối với công trình của Thongtan & Phienthrakul (2019) [7].
+
+- **Tốc độ phát triển nhanh của lĩnh vực**: Các mô hình và kỹ thuật mới, đặc biệt là trong lĩnh vực Deep Learning và Transformer, liên tục được đề xuất. Điều này khiến cho một bài khảo sát có nguy cơ nhanh chóng trở nên lỗi thời nếu không cập nhật kịp thời các xu hướng và kết quả mới nhất.
+
+- **Độ phức tạp của các phương pháp hiện đại**: Việc hiểu sâu sắc nguyên lý hoạt động, ưu nhược điểm của các kiến trúc phức tạp như Transformer, các kỹ thuật embedding tiên tiến, hay các phương pháp ensemble đòi hỏi nền tảng kiến thức vững chắc và khả năng phân tích đa chiều.
+
+- **Giới hạn của việc tập trung vào một tập dữ liệu**: Mặc dù việc tập trung vào IMDb giúp so sánh trực tiếp, nhưng hiệu suất của một phương pháp trên IMDb không phải lúc nào cũng phản ánh chính xác hiệu quả của nó trên các tập dữ liệu khác với đặc điểm ngôn ngữ, độ dài văn bản, hoặc lĩnh vực khác nhau.
+
 # 2. Tổng quan các phương pháp (Literature Review / Methodologies Overview)
 
 Phần này trình bày tổng quan về các phương pháp tiếp cận khác nhau đã được đề xuất và đánh giá cho bài toán phân tích cảm xúc trên tập dữ liệu IMDb 50K Movie Reviews. Các phương pháp này trải dài từ các kỹ thuật Machine Learning (ML) truyền thống, các kiến trúc Deep Learning (DL) đa dạng, cho đến các mô hình Transformer mạnh mẽ và các kỹ thuật Ensemble Learning nhằm kết hợp ưu điểm của nhiều mô hình.
