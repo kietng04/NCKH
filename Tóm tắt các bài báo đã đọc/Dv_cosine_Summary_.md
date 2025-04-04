@@ -1,0 +1,27 @@
+# Tóm tắt: Vectơ Tài liệu Sử dụng Độ Tương Đồng Cosine
+
+## Giới thiệu 
+Bài báo này xem xét lại một mô hình đã từng báo cáo độ chính xác kiểm tra SOTA (97.42%) trên tập dữ liệu đánh giá phim IMDB [1, Tóm tắt]. Kết quả này được Thongtan và Phienthrakul (2019) đạt được bằng cách sử dụng một mô hình tổ hợp kết hợp **Vectơ tài liệu huấn luyện với độ tương đồng cosine (DV-ngrams-cosine)** và **Vectơ Bag-of-N-grams có trọng số Naive Bayes (NB-weighted BON)**, sau đó sử dụng bộ phân loại hồi quy logistic [1, Tóm tắt, Mục 1]. Đáng chú ý, mô hình đơn giản này đã vượt qua các mô hình Transformer lớn được huấn luyện trước trên bài toán cụ thể này, khiến các tác giả của bài báo quyết định điều tra kỹ hơn về mô hình và cách triển khai của nó [1, Mục 2].
+
+## Phát hiện lỗi trong quá trình đánh giá
+Phát hiện quan trọng của bài báo này là một lỗi nghiêm trọng trong quy trình đánh giá của mô hình tổ hợp ban đầu [1, Tóm tắt, Mục 2]. Các tác giả phát hiện rằng trong quá trình triển khai, hai biểu diễn vectơ (DV-ngrams-cosine và NB-weighted BON) được ghép nối cho mỗi ví dụ huấn luyện hoặc kiểm tra không thực sự đến từ cùng một tài liệu. Sự khác biệt trong thứ tự tài liệu trong các tệp đã tiền xử lý ("p1gram.txt" cho BON, "p3gram.txt" cho DV-ngrams-cosine) dẫn đến việc ghép nối vectơ từ hai tài liệu khác nhau [1, Mục 2, Phụ lục A, Hình 3, Hình 4]. Tuy nhiên, các tài liệu bị trộn lẫn này luôn thuộc cùng một lớp (tích cực/tiêu cực) và cùng một tập dữ liệu (huấn luyện/kiểm tra) [1, Mục 2, Phụ lục A].
+
+Việc ghép nối sai này vô tình làm rò rỉ thông tin trong quá trình đánh giá. Khi một tài liệu "khó phân loại" (được dự đoán với độ tin cậy thấp bởi một loại vectơ) được ghép với một tài liệu "dễ phân loại" (được dự đoán với độ tin cậy cao bởi loại vectơ kia) của cùng một lớp, dự đoán có độ tin cậy cao thường chi phối kết quả cuối cùng, dẫn đến phân loại chính xác hơn. Điều này làm tăng đáng kể độ chính xác được báo cáo do quá trình đánh giá vô tình sử dụng thông tin về nhãn thực tế để tạo ra cặp ghép thuận lợi [1, Mục 2, Phụ lục B.3, Hình 6, Hình 7, Hình 8].
+
+## Kết quả sau khi sửa lỗi và đánh giá lại
+Sau khi sửa lỗi và đảm bảo rằng các vectơ đến từ cùng một tài liệu, các tác giả đã đánh giá lại mô hình tổ hợp [1, Mục 2]. Độ chính xác kiểm tra trên tập IMDB giảm đáng kể từ **97.42% xuống còn 93.68%** [1, Tóm tắt, Mục 2, Bảng 1]. Kết quả sửa đổi này chỉ cho thấy một cải thiện khiêm tốn **0.55%** so với khi chỉ sử dụng DV-ngrams-cosine (93.13%), phù hợp hơn với các cải tiến được quan sát trong các nghiên cứu trước đó [1, Mục 2, Bảng 1]. Các kiểm tra hợp lý với các chiến lược xáo trộn khác nhau đã xác nhận rằng độ chính xác cao chỉ có thể đạt được khi sử dụng các phương pháp có vô tình sử dụng thông tin nhãn kiểm tra [1, Phụ lục B, Bảng 2].
+
+## Phân tích hiệu suất với kích thước dữ liệu khác nhau
+Các tác giả đã phân tích hiệu suất của từng thành phần (DV-ngrams-cosine, NB-weighted BON), mô hình tổ hợp sau khi sửa lỗi và mô hình Transformer RoBERTa trên các kích thước tập huấn luyện khác nhau [1, Mục 3]. Trong khi RoBERTa thường đạt độ chính xác cao hơn, đặc biệt là với các tập dữ liệu lớn, mô hình DV-ngrams-cosine cho thấy hiệu suất mạnh mẽ đáng ngạc nhiên khi số lượng ví dụ huấn luyện được gán nhãn cực kỳ ít (chỉ 10 hoặc 20 tài liệu), vượt qua cả RoBERTa được tinh chỉnh trong các kịch bản dữ liệu ít [1, Mục 3, Hình 1]. Tuy nhiên, cần lưu ý rằng DV-ngrams-cosine được huấn luyện trước trên dữ liệu IMDB, trong khi RoBERTa sử dụng dữ liệu huấn luyện từ nhiều lĩnh vực khác nhau [1, Mục 3].
+
+## Kỹ thuật NB Sub-Sampling để cải thiện huấn luyện
+Các tác giả đề xuất một cải tiến mới cho quá trình huấn luyện DV-ngrams-cosine, gọi là **NB Sub-Sampling** [1, Mục 4]. Lấy cảm hứng từ Naive Bayes, kỹ thuật này tính toán tầm quan trọng của từng n-gram đối với việc phân loại cảm xúc bằng cách sử dụng trọng số của bộ phân loại NB (Phương trình 3). Trong quá trình huấn luyện, các n-gram sau đó được lấy mẫu theo xác suất dựa trên tầm quan trọng của chúng (Phương trình 4), giúp mô hình tập trung vào các đặc trưng có liên quan đến cảm xúc hơn [1, Mục 4]. Thử nghiệm cho thấy phương pháp này giúp **tăng tốc độ hội tụ trong quá trình huấn luyện** và đạt độ chính xác kiểm tra tốt hơn một chút (93.36% trên một tập huấn luyện/kiểm tra cụ thể) so với phương pháp huấn luyện DV-ngrams-cosine tiêu chuẩn, mà không gây ra hiện tượng quá khớp [1, Mục 4, Hình 2, Bảng 1, Hình 9].
+
+## Kết hợp với RoBERTa
+Với hiệu suất mạnh mẽ của RoBERTa, các tác giả cũng thử nghiệm kết hợp RoBERTa với mô hình DV-ngrams-cosine (bao gồm cả phiên bản NB sub-sampled) [1, Mục 5]. Tuy nhiên, sự kết hợp này chỉ mang lại **cải thiện nhỏ (~0.13-0.15%)** so với việc chỉ sử dụng RoBERTa, cho thấy rằng hai mô hình này có sự bổ sung hạn chế khi áp dụng trên toàn bộ tập dữ liệu [1, Mục 5, Bảng 1].
+
+## Kết luận
+Bài báo này đã xác định và sửa chữa một lỗi đánh giá nghiêm trọng trong một kết quả SOTA trước đó trên tập IMDB, làm giảm độ chính xác từ **97.42% xuống còn 93.68%**. Nó cung cấp cái nhìn sâu sắc hơn về hiệu suất của mô hình, cho thấy **DV-ngrams-cosine có hiệu quả đáng ngạc nhiên trong kịch bản dữ liệu cực ít**, so sánh với RoBERTa. Ngoài ra, bài báo còn giới thiệu một kỹ thuật **NB sub-sampling** giúp cải thiện hiệu suất huấn luyện và kết quả cuối cùng của DV-ngrams-cosine [1, Mục 6].
+
+## Nguồn tham khảo
+[1] Zhang, B., & Arefyev, N. (2022). *The Document Vectors Using Cosine Similarity Revisited*. arXiv preprint arXiv:2205.13357.
