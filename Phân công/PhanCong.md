@@ -12,7 +12,13 @@
 |Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Viết khảo toàn bộ sát đề tài|
 |Nguyễn Thế Kiên                    |3122410194|Làm slide khảo sát đề tài và làm slide khảo sát|
 |Phạm Văn Kiệt                      |3122410200| TÌm hiểu nội dung khảo sát, key paper để thuyết trình
+# Bài 6
 
+|Họ và tên                          |MSSV      | Nhiệm vụ                                                             |
+|-----------------------------------|----------|----------------------------------------------------------------------|
+|Nguyễn Phan Tuấn Kiệt (Trưởng nhóm)|3122410193|Tóm tắt và duyệt, tổng hợp nội dung|
+|Nguyễn Thế Kiên                    |3122410194|Tóm tắt, phân chia và trình bày nội dung trên Word|
+|Phạm Văn Kiệt                      |3122410200| Tóm tắt và trình bày nội dung trên Powerpoint
 # PHÂN CÔNG ĐỀ TÀI CUỐI KHOÁ
 # Kế hoạch nghiên cứu khoa học chi tiết
 
