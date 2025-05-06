@@ -14,91 +14,112 @@
 |Phạm Văn Kiệt                      |3122410200| TÌm hiểu nội dung khảo sát, key paper để thuyết trình
 
 # PHÂN CÔNG ĐỀ TÀI CUỐI KHOÁ
+# Kế hoạch nghiên cứu khoa học chi tiết
 
-## Lộ Trình 8 Tuần: Phát Triển Mô Hình Deep Learning Phân Tích Cảm Xúc
+## Tuần 3: Thu thập dữ liệu
+- **Nhiệm vụ 3.1:** Tải bộ dữ liệu IMDB 50K Movie Reviews
+- **Nhiệm vụ 3.2:** Phân chia dữ liệu thành các tập huấn luyện và kiểm thử
+- **Nhiệm vụ 3.3:** Tạo các tập dữ liệu con với các kích thước khác nhau (1%, 5%, 10%, 25%, 50%, 100%)
+- **Nhiệm vụ 3.4:** Lưu trữ và tổ chức dữ liệu theo cấu trúc phù hợp với nghiên cứu
 
-### Tuần 1: Nghiên Cứu Nền Tảng và Chuẩn Bị Môi Trường
-- **Công việc 1.1**: Nghiên cứu tổng quan về phân tích cảm xúc *(sentiment analysis)* và các phương pháp deep learning hiện đại
-  - Đọc và tóm tắt 5-7 bài báo liên quan đến phân tích cảm xúc sử dụng deep learning
-  - Tìm hiểu về dataset IMDB 50K và các đặc điểm của nó
-- **Công việc 1.2**: Chuẩn bị môi trường phát triển
-  - Cài đặt các thư viện cần thiết *(PyTorch, TensorFlow, sklearn, pandas, numpy)*
-  - Tạo cấu trúc thư mục dự án theo tiêu chuẩn
-  - Tải và kiểm tra dataset IMDB
-- **Đầu ra**: Báo cáo tổng quan về phân tích cảm xúc và môi trường phát triển hoàn chỉnh.
+## Tuần 4: Phân tích khám phá dữ liệu (EDA)
+- **Nhiệm vụ 4.1:** Phân tích thống kê cơ bản
+  - Thống kê độ dài đánh giá (số từ, số câu)
+  - Phân bố nhãn (tích cực/tiêu cực) trong các tập dữ liệu
+  - Tần suất xuất hiện của từ ngữ
+- **Nhiệm vụ 4.2:** Trực quan hóa dữ liệu
+  - Vẽ biểu đồ phân bố độ dài văn bản
+  - Tạo word clouds cho các nhóm đánh giá tích cực/tiêu cực
+  - Phân tích và trực quan hóa các n-gram phổ biến nhất
+- **Nhiệm vụ 4.3:** Phân tích đặc điểm ngôn ngữ
+  - Xác định các n-gram đặc trưng cho mỗi lớp cảm xúc
+  - Phân tích giá trị thông tin (Information Gain) của từng n-gram
+  - Tính toán trọng số NB cho các n-gram
+- **Nhiệm vụ 4.4:** Tiền xử lý dữ liệu
+  - Loại bỏ HTML tags, ký tự đặc biệt
+  - Tokenization và chuẩn hóa văn bản
+  - Loại bỏ stop words và lemmatization/stemming
+  - Tạo ma trận đặc trưng (feature matrices) từ dữ liệu đã xử lý
 
-### Tuần 2: Khám Phá và Tiền Xử Lý Dữ Liệu
-- **Công việc 2.1**: Phân tích khám phá dữ liệu *(EDA)*
-  - Phân tích phân phối của nhãn *(tích cực/tiêu cực)*
-  - Phân tích độ dài bình luận
-  - Xác định các từ phổ biến nhất
-  - Trực quan hóa dữ liệu *(biểu đồ, đồ thị)*
-- **Công việc 2.2**: Tiền xử lý dữ liệu
-  - Loại bỏ thẻ HTML
-  - Chuyển đổi chữ thường
-  - Loại bỏ dấu câu và stopwords
-  - Phân chia dữ liệu thành tập huấn luyện và tập kiểm tra
-- **Đầu ra**: Báo cáo EDA với hình ảnh trực quan và dữ liệu đã được tiền xử lý.
+## Tuần 5: Xây dựng mô hình cơ sở (Baseline)
+- **Nhiệm vụ 5.1:** Triển khai mô hình DV-ngrams-cosine cơ bản theo Zhang & Arefyev (2022)
+  - Triển khai Doc2Vec với cosine similarity trong quá trình huấn luyện
+  - Thử nghiệm với các kích thước vector (100, 200, 300)
+  - Thử nghiệm với các giá trị n khác nhau cho n-gram (1-3, 1-4, 1-5)
+- **Nhiệm vụ 5.2:** Triển khai NB Sub-Sampling cơ bản theo Thongtan & Phienthrakul (2019)
+- **Nhiệm vụ 5.3:** Xây dựng pipeline huấn luyện và đánh giá
+  - Thiết lập cross-validation
+  - Đo lường accuracy, precision, recall, F1-score
+  - Lưu kết quả baseline làm cơ sở so sánh
 
-### Tuần 3: Chuẩn Bị Word Embeddings và Thiết Kế Mô Hình
-- **Công việc 3.1**: Tải và chuẩn bị pre-trained word embeddings
-  - Tải FastText embeddings
-  - Tải GloVe embeddings
-  - Tạo embedding matrix cho từ điển
-- **Công việc 3.2**: Thiết kế kiến trúc mô hình
-  - Nghiên cứu và so sánh các kiến trúc LSTM, BiLSTM, và CNN-LSTM
-  - Thiết kế lớp đầu vào và output cho mô hình
-  - Xác định các tham số mô hình *(learning rate, batch size, epochs)*
-- **Đầu ra**: Báo cáo về việc chuẩn bị word embeddings và thiết kế mô hình.
+## Tuần 6-7: Cải tiến Hard Negative Sampling
+- **Nhiệm vụ 6.1:** Nghiên cứu kỹ thuật Hard Negative Sampling
+  - Tìm hiểu các phương pháp tương tự trong lĩnh vực khác (vision, recommendation)
+  - Xác định chiến lược lựa chọn hard negatives phù hợp nhất
+- **Nhiệm vụ 6.2:** Thiết kế thuật toán chọn Hard Negatives
+  - Xây dựng hàm tính toán độ tương đồng giữa các mẫu
+  - Thiết lập ngưỡng lựa chọn hard negatives
+  - Quyết định tỷ lệ giữa hard negatives và random negatives
+- **Nhiệm vụ 7.1:** Triển khai Hard Negative Sampling
+  - Tích hợp thuật toán vào quy trình huấn luyện Doc2Vec
+  - Tối ưu hóa để tránh tăng quá nhiều thời gian huấn luyện
+- **Nhiệm vụ 7.2:** Thử nghiệm với các siêu tham số
+  - K hard negatives (số lượng hard negatives cho mỗi mẫu positive)
+  - Ngưỡng tương đồng để xác định hard negative
+  - Tỷ lệ giữa hard và random negatives
 
-### Tuần 4: Xây Dựng và Huấn Luyện Mô Hình LSTM với FastText
-- **Công việc 4.1**: Cài đặt mô hình LSTM với FastText embedding
-  - Cài đặt lớp Dataset và DataLoader
-  - Cài đặt kiến trúc mô hình LSTM
-  - Cài đặt hàm mất mát và phương pháp tối ưu
-- **Công việc 4.2**: Huấn luyện và đánh giá mô hình
-  - Huấn luyện mô hình với 5 epochs
-  - Theo dõi độ chính xác trên tập validation
-  - Trực quan hóa quá trình huấn luyện
-- **Đầu ra**: Mô hình LSTM với FastText đã được huấn luyện và báo cáo hiệu suất.
+## Tuần 8-9: Cải tiến NB Sub-Sampling nâng cao
+- **Nhiệm vụ 8.1:** Thiết kế hàm trọng số tần suất cho n-gram
+  - Thử nghiệm các hàm f(t) khác nhau: logarithmic, quadratic, etc.
+  - Xác định ngưỡng tần suất cao/thấp
+- **Nhiệm vụ 8.2:** Xây dựng phương pháp phân tích đặc trưng theo lớp
+  - Thiết kế chiến lược ưu tiên dựa trên P(c|w) và P(w|c)
+  - Tích hợp với phân tích tần suất
+- **Nhiệm vụ 9.1:** Cải tiến công thức lấy mẫu P(w)
+  - Triển khai công thức mới kết hợp cả yếu tố tần suất và đặc trưng lớp
+  - Tối ưu hóa các siêu tham số α, t
+- **Nhiệm vụ 9.2:** Thử nghiệm các biến thể của công thức cải tiến
+  - So sánh hiệu quả giữa các biến thể 
+  - Lựa chọn phiên bản tốt nhất
 
-### Tuần 5: Xây Dựng và Huấn Luyện Mô Hình LSTM với GloVe
-- **Công việc 5.1**: Cài đặt mô hình LSTM với GloVe embedding
-  - Tích hợp GloVe embeddings vào mô hình
-  - Điều chỉnh kiến trúc nếu cần thiết
-- **Công việc 5.2**: Huấn luyện và đánh giá mô hình
-  - Huấn luyện mô hình với 5 epochs
-  - So sánh với mô hình FastText
-  - Phân tích ưu nhược điểm của từng phương pháp embedding
-- **Đầu ra**: Mô hình LSTM với GloVe đã được huấn luyện và báo cáo so sánh với FastText.
+## Tuần 10: Kết hợp hai cải tiến và đánh giá cuối cùng
+- **Nhiệm vụ 10.1:** Kết hợp Hard Negative Sampling và NB Sub-Sampling nâng cao
+  - Thiết kế pipeline tích hợp cả hai cải tiến
+  - Điều chỉnh các siêu tham số khi cả hai phương pháp hoạt động cùng nhau
+- **Nhiệm vụ 10.2:** Đánh giá mô hình trên các kích thước dữ liệu khác nhau
+  - Thử nghiệm với 1%, 5%, 10%, 25%, 50%, 100% dữ liệu huấn luyện
+  - Phân tích độ nhạy của mô hình với kích thước dữ liệu
+- **Nhiệm vụ 10.3:** So sánh với các phương pháp SOTA hiện đại
+  - So sánh với RoBERTa và các mô hình Transformer khác
+  - Phân tích trade-off giữa hiệu suất và tài nguyên tính toán
 
-### Tuần 6: Tối Ưu Hóa Mô Hình và Thử Nghiệm Kiến Trúc Nâng Cao
-- **Công việc 6.1**: Tối ưu hóa mô hình hiện tại
-  - Tinh chỉnh tham số *(hyperparameter tuning)*
-  - Thử nghiệm các kỹ thuật điều chỉnh *(regularization)*
-  - Áp dụng cross-validation để đánh giá độ tin cậy
-- **Công việc 6.2**: Thử nghiệm với kiến trúc nâng cao
-  - Cài đặt mô hình CNN-LSTM kết hợp
-  - Huấn luyện và so sánh với các mô hình trước đó
-- **Đầu ra**: Báo cáo tối ưu hóa và so sánh các kiến trúc mô hình.
+## Tuần 11: Phân tích sâu và báo cáo kết quả
+- **Nhiệm vụ 11.1:** Phân tích lỗi và case study
+  - Xác định các trường hợp mô hình dự đoán sai
+  - So sánh các trường hợp lỗi giữa phương pháp cũ và mới
+  - Phân tích các n-gram được chọn bởi từng phương pháp
+- **Nhiệm vụ 11.2:** Phân tích hiệu quả tính toán
+  - Đo thời gian huấn luyện và dự đoán
+  - Đánh giá sử dụng bộ nhớ và tài nguyên GPU
+  - So sánh với các phương pháp phức tạp hơn như BERT, RoBERTa
+- **Nhiệm vụ 11.3:** Viết báo cáo nghiên cứu
+  - Trình bày phương pháp, kết quả và phân tích
+  - Chuẩn bị biểu đồ, bảng so sánh
+  - Thảo luận về những phát hiện chính
 
-### Tuần 7: Xây Dựng Giao Diện Tương Tác và Đánh Giá Toàn Diện
-- **Công việc 7.1**: Xây dựng giao diện tương tác
-  - Cài đặt hàm để xử lý đầu vào của người dùng
-  - Tạo chức năng dự đoán sentiment từ văn bản tùy ý
-- **Công việc 7.2**: Đánh giá toàn diện các mô hình
-  - So sánh hiệu suất giữa các mô hình *(FastText, GloVe, CNN-LSTM)*
-  - Phân tích các trường hợp dự đoán sai
-  - Trực quan hóa so sánh các metric
-- **Đầu ra**: Giao diện tương tác và báo cáo đánh giá tổng thể.
+## Tuần 12: Hoàn thiện báo cáo và chuẩn bị trình bày
+- **Nhiệm vụ 12.1:** Hoàn thiện báo cáo
+  - Hiệu đính và cấu trúc lại báo cáo
+  - Bổ sung tài liệu tham khảo và phụ lục
+- **Nhiệm vụ 12.2:** Chuẩn bị mã nguồn và tài liệu
+  - Dọn dẹp và tổ chức mã nguồn
+  - Viết tài liệu hướng dẫn sử dụng
+  - Tạo notebook demo
+- **Nhiệm vụ 12.3:** Chuẩn bị trình bày
+  - Tạo slide trình bày
+  - Chuẩn bị demo trực quan (nếu cần)
 
-### Tuần 8: Viết Báo Cáo và Chuẩn Bị Thuyết Trình
-- **Công việc 8.1**: Viết báo cáo nghiên cứu khoa học
-  - Tổng hợp các phần: giới thiệu, phương pháp, kết quả, thảo luận
-  - Tạo các hình ảnh và bảng minh họa chất lượng cao
-  - Rà soát và chỉnh sửa báo cáo
-- **Công việc 8.2**: Chuẩn bị thuyết trình và tài liệu bổ sung
-  - Tạo slide thuyết trình
-  - Chuẩn bị demo trực tiếp của mô hình
-  - Tổ chức mã nguồn và tài liệu để chia sẻ
-- **Đầu ra**: Báo cáo nghiên cứu hoàn chỉnh, slide thuyết trình và mã nguồn đã được tổ chức.
+## Phân công nhiệm vụ:
+- **Nguyễn Phan Tuấn Kiệt (trưởng nhóm)**: Quản lý dự án, thiết kế Hard Negative Sampling, viết báo cáo chính
+- **Nguyễn Thế Kiên**: Tiền xử lý dữ liệu, phân tích EDA, cải tiến NB Sub-Sampling
+- **Phạm Văn Kiệt**: Phân tích kết quả, đánh giá hiệu năng, chuẩn bị trình bày
