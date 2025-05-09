@@ -24,3 +24,4 @@ if __name__ == "__main__":
     download("https://drive.google.com/file/d/1GDttGJrnZh370Y0KNMbAMfRNU50La07R/view?usp=sharing", "files_root", "alldata-id_p3gram.txt")
     download("https://drive.google.com/file/d/1a-eOTfKXXqUpM19GepIxkZxI4N8ESSBJ/view?usp=sharing", "files_root", "train_vectors.txt")
     download("https://drive.google.com/file/d/1GFpVVrA1AlXBsWVx2McOnlAWyNm47TCI/view?usp=sharing", "files_root", "test_vectors.txt")
+~
