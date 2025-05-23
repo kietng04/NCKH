@@ -6,58 +6,79 @@
 |Nguyễn Thế Kiên                    |3122410194|[https://tkieen.github.io/PersonalWebsite/](https://tkieen.github.io/PersonalWebsite/) |nguyenthekien62@gmail.com|
 |Phạm Văn Kiệt                      |3122410200|[https://vankiet04.github.io/portfolio/](https://vankiet04.github.io/portfolio) |pvk210504@gmail.com|
 
-# PHÂN TÍCH CẢM XÚC ĐÁNH GIÁ PHIM SỬ DỤNG VECTOR TÀI LIỆU VÀ ĐỘ TƯƠNG TỰ COSIN
+# PHÂN TÍCH CẢM XÚC ĐÁNH GIÁ PHIM SỬ DỤNG PHƯƠNG PHÁP ENSEMBLE
 
 ## 1. Tên đề tài
-Phân tích cảm xúc đánh giá phim sử dụng Document Vectors và độ tương tự Cosin
+Phân tích cảm xúc đánh giá phim sử dụng phương pháp Ensemble
 
 ## 2. Lý do chọn đề tài
 
-- **Nhu cầu thực tiễn về phân tích cảm xúc tự động**: Hiện nay, khối lượng đánh giá trực tuyến về phim ảnh, sản phẩm và dịch vụ ngày càng tăng, việc phân tích thủ công trở nên bất khả thi.
+- **Thách thức trong phân tích cảm xúc văn bản**: Phân tích cảm xúc văn bản gặp nhiều khó khăn khi xử lý cấu trúc ngôn ngữ phức tạp như phủ định, mỉa mai, và biểu đạt cảm xúc tinh tế.
 
-- **Ứng dụng rộng rãi trong ngành công nghiệp**: Hệ thống phân tích cảm xúc tự động giúp các nền tảng phim (Netflix, IMDB), chuỗi rạp chiếu và các nhà sản xuất nắm bắt phản hồi của khán giả, hỗ trợ ra quyết định về chiến lược marketing và sản xuất nội dung.
+- **Hạn chế của mô hình đơn lẻ**: Các mô hình transformer lớn như BERT, XLNet đạt hiệu suất cao nhưng đòi hỏi tài nguyên tính toán lớn và dữ liệu huấn luyện khổng lồ.
 
-- **Nhu cầu về các mô hình nhẹ nhưng hiệu quả**: Trong khi các mô hình Transformer lớn đòi hỏi tài nguyên tính toán cao, mô hình như DV-ngrams-cosine có tiềm năng hoạt động hiệu quả trên các thiết bị có tài nguyên hạn chế.
+- **Tiềm năng của phương pháp ensemble**: Phương pháp kết hợp có khả năng tận dụng điểm mạnh của nhiều mô hình khác nhau để nâng cao hiệu suất phân loại.
 
-- **Hiệu quả trong điều kiện dữ liệu hạn chế**: Phát hiện mô hình DV-ngrams-cosine vượt trội khi có ít dữ liệu huấn luyện giúp giải quyết vấn đề khan hiếm dữ liệu gán nhãn trong nhiều bối cảnh thực tế.
+- **Ứng dụng thực tiễn rộng rãi**: Kết quả nghiên cứu có thể ứng dụng trong nhiều lĩnh vực như gợi ý nội dung, giám sát thương hiệu và phân tích phản hồi khách hàng.
 
-- **Hỗ trợ hệ thống gợi ý nội dung**: Kết quả phân tích cảm xúc có thể tích hợp vào các hệ thống gợi ý để cá nhân hóa trải nghiệm người dùng trên các nền tảng phim ảnh và giải trí.
+- **Cân bằng giữa hiệu suất và hiệu quả tài nguyên**: Phương pháp ensemble giúp tối ưu hóa hiệu suất mà không đòi hỏi tăng đáng kể chi phí tính toán.
 
-- **Tối ưu hóa hiệu suất chi phí**: Cải tiến mô hình nhẹ và hiệu quả giúp doanh nghiệp tiết kiệm chi phí triển khai hệ thống phân tích cảm xúc quy mô lớn.
 ## 3. Dataset
-- Bộ dữ liệu IMDB movie reviews
+- Bộ dữ liệu IMDB Reviews
 - Quy mô: 50.000 đánh giá phim (25.000 huấn luyện, 25.000 kiểm tra)
-- Nguồn: Andrew L. Maas, Raymond E. Daly, Peter T. Pham, Dan Huang, Andrew Y. Ng, và Christopher Potts (2011) trong bài báo "Learning word vectors for sentiment analysis" tại Hội nghị ACL-HLT 201
-- Cấu trúc: Chia thành tập huấn luyện, tập xác thực và tập kiểm tra
+- Phân phối cân bằng: 50% tích cực, 50% tiêu cực
+- Nguồn: Andrew L. Maas và cộng sự (2011), bài báo "Learning word vectors for sentiment analysis" tại Hội nghị ACL-HLT 2011
+- Đặc điểm: Độ dài trung bình khoảng 231 từ/đánh giá, phong phú về cấu trúc ngôn ngữ và biểu đạt cảm xúc
 
 ## 4. Input/Output
-- **Input**: Bình luận/đánh giá phim từ IMDB
+- **Input**: Đánh giá phim từ IMDB (văn bản)
 - **Output**: Phân loại nhị phân: Tích cực (1) hoặc Tiêu cực (0)
 
 ## 5. Mô hình sử dụng
-- **Mô hình chính**: Document Vectors using Cosine Similarity (DV-ngrams-cosine)
-- **Mô hình kết hợp**: 
-  * Bag-of-N-grams vectors với trọng số Naive Bayesian (NB-weighted BON)
-  * Mô hình DV-ngrams-cosine kết hợp với NB-weighted BON
-  * So sánh với RoBERTa (mô hình Transformer hiện đại)
-  * Cải tiến: DV-ngrams-cosine với NB Sub-Sampling
+- **Mô hình đơn lẻ**: 
+  * Logistic Regression
+  * K-Nearest Neighbors (KNN)
+  * Naive Bayes
+  
+- **Phương pháp ensemble**: 
+  * Hard Voting (bỏ phiếu cứng)
+  * Soft Voting (bỏ phiếu mềm)
+  
+- **Đặc trưng sử dụng**:
+  * Đặc trưng văn bản được trọng số hóa bằng Naive Bayes
+  * Kết hợp với vector embedding
 
 ## 6. Độ đo đánh giá
 - **Độ chính xác (Accuracy)**: Tỉ lệ phần trăm các dự đoán đúng
+- **F1-score**: Trung bình điều hòa của Precision và Recall
+- **Phân tích định tính**: Đánh giá khả năng xử lý các trường hợp ngôn ngữ phức tạp
 
 ## 7. Các bước thực hiện nghiên cứu
-1. **Phân tích lại mô hình đã công bố**: Xác định lỗi trong quy trình đánh giá của các nghiên cứu trước
-2. **Đánh giá lại mô hình**: Sửa lỗi và báo cáo kết quả chính xác (93.68% thay vì 97.42%)
-3. **Phân tích hiệu suất với lượng dữ liệu khác nhau**:
-   - So sánh DV-ngrams-cosine với RoBERTa trên các tập dữ liệu huấn luyện khác nhau
-   - Đánh giá hiệu suất khi số lượng mẫu huấn luyện ít (10-20 mẫu)
-4. **Đề xuất cải tiến**: Áp dụng phương pháp NB Sub-Sampling cho DV-ngrams-cosine
-5. **Kết hợp mô hình**: Thử nghiệm kết hợp DV-ngrams-cosine với RoBERTa
+1. **Thu thập và tiền xử lý dữ liệu**:
+   - Chuẩn hóa văn bản đánh giá phim
+   - Trích xuất đặc trưng n-gram
+   - Kết hợp với vector embedding
+
+2. **Xây dựng mô hình đơn lẻ**:
+   - Huấn luyện các mô hình Logistic Regression, KNN và Naive Bayes
+   - Đánh giá hiệu suất từng mô hình riêng lẻ
+
+3. **Triển khai các phương pháp ensemble**:
+   - Thiết kế và triển khai Hard Voting
+   - Thiết kế và triển khai Soft Voting
+   - Tối ưu hóa quy trình kết hợp dự đoán
+
+4. **Đánh giá và phân tích kết quả**:
+   - So sánh hiệu suất giữa các mô hình đơn lẻ và phương pháp ensemble
+   - Phân tích chi tiết các trường hợp phức tạp
+   - Đánh giá khả năng ứng dụng thực tế
 
 ## 8. Kết quả dự kiến
-- Đánh giá chính xác hiệu suất của DV-ngrams-cosine trên bộ dữ liệu IMDB
-- So sánh toàn diện với các mô hình hiện đại như RoBERTa
-- Phân tích ưu và nhược điểm của từng phương pháp phụ thuộc vào kích thước tập dữ liệu huấn luyện
-- Đề xuất phương pháp cải tiến để tăng tốc độ huấn luyện và cải thiện hiệu suất
+- So sánh toàn diện hiệu suất giữa các mô hình đơn lẻ và phương pháp ensemble
+- Phân tích ưu và nhược điểm của Hard Voting và Soft Voting trong phân tích cảm xúc
+- Đánh giá khả năng xử lý các trường hợp ngôn ngữ phức tạp của phương pháp ensemble
+- Đề xuất cải tiến và hướng phát triển tương lai
+
 # SCHEDULE
-**[Google Sheets](https://docs.google.com/spreadsheets/d/1R6TcgMAHRGDLy_LWjGpTvcf478gThrEl4cTsUK8NyQ8/edit?gid=94895279#gid=94895279)**
+**[Google Sheets](https://docs.google.com/spreadsheets/d/1Q9h6LFw36fSQiCDfojJd62I6kkspTYdbZtQn_GCc1Zs/edit?usp=sharing)**
+
