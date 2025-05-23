@@ -39,25 +39,25 @@ Phân tích cảm xúc đánh giá phim sử dụng phương pháp Ensemble
 ## 5. Mô hình sử dụng
 - **Mô hình đơn lẻ**: 
   * Logistic Regression
-   - Là một mô hình phân loại tuyến tính dùng hàm sigmoid để ước tính xác suất
-   - Ưu điểm: Đơn giản, hiệu quả, dễ hiểu và triển khai, có khả năng xác định mức độ quan trọng của từng đặc trưng
-   - Phù hợp cho phân loại văn bản khi số lượng đặc trưng lớn
-   - Trong phân tích cảm xúc, mô hình có thể xác định trọng số của các từ tích cực và tiêu cực
+    - Là một mô hình phân loại tuyến tính dùng hàm sigmoid để ước tính xác suất
+    - Ưu điểm: Đơn giản, hiệu quả, dễ hiểu và triển khai, có khả năng xác định mức độ quan trọng của từng đặc trưng
+    - Phù hợp cho phân loại văn bản khi số lượng đặc trưng lớn
+    - Trong phân tích cảm xúc, mô hình có thể xác định trọng số của các từ tích cực và tiêu cực
 
   <img src="Image/Logistic.png" width ="412">
 
   * K-Nearest Neighbors (KNN)
-   - Là mô hình xác suất dựa trên định lý Bayes với giả định các đặc trưng độc lập với nhau
-   - Phiên bản thường dùng cho phân tích văn bản: Multinomial Naive Bayes
-   - Ưu điểm: Hiệu quả với dữ liệu văn bản lớn, tốc độ nhanh, ít tài nguyên
-   - Phù hợp với bài toán phân loại văn bản nhờ khả năng xử lý hiệu quả các đặc trưng là từ ngữ
-  
+    - Là mô hình xác suất dựa trên định lý Bayes với giả định các đặc trưng độc lập với nhau
+    - Phiên bản thường dùng cho phân tích văn bản: Multinomial Naive Bayes
+    - Ưu điểm: Hiệu quả với dữ liệu văn bản lớn, tốc độ nhanh, ít tài nguyên
+    - Phù hợp với bài toán phân loại văn bản nhờ khả năng xử lý hiệu quả các đặc trưng là từ ngữ
+   
   <img src="Image/KNN.png" width ="412">
 
   * Naive Bayes
-   - Là mô hình học dựa trên ví dụ, phân loại dựa trên đa số trong k điểm dữ liệu gần nhất
-   - Hoạt động bằng cách tính khoảng cách giữa mẫu cần dự đoán và các mẫu trong tập huấn luyện
-   - Ưu điểm: Không cần giả định về phân phối dữ liệu, dễ hiểu và triển khai
+    - Là mô hình học dựa trên ví dụ, phân loại dựa trên đa số trong k điểm dữ liệu gần nhất
+    - Hoạt động bằng cách tính khoảng cách giữa mẫu cần dự đoán và các mẫu trong tập huấn luyện
+    - Ưu điểm: Không cần giả định về phân phối dữ liệu, dễ hiểu và triển khai
 
   ![Mô hình Naive Bayes](Image/NaiveBayes.png)
   
