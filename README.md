@@ -34,11 +34,21 @@ Phân tích cảm xúc đánh giá phim sử dụng phương pháp Ensemble
 - **Input**: Đánh giá phim từ IMDB (văn bản)
 - **Output**: Phân loại nhị phân: Tích cực (1) hoặc Tiêu cực (0)
 
+<img src ="Image/InputOutput.png" width ="412">
+
 ## 5. Mô hình sử dụng
 - **Mô hình đơn lẻ**: 
   * Logistic Regression
+
+  <img src="Image/Logistic.png" width ="412">
+
   * K-Nearest Neighbors (KNN)
+  
+  <img src="Image/KNN.png" width ="412">
+
   * Naive Bayes
+
+  ![Mô hình Naive Bayes](Image/NaiveBayes.png)
   
 - **Phương pháp ensemble**: 
   * Hard Voting (bỏ phiếu cứng)
